@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+////////// EXO Algo 01
+
+let heure = prompt("Entrer l'heure");
+let minute = prompt("Entrer les minutes");
+
+heure = Number(heure);
+minute = Number(minute); 
+console.log(heure,minute);
+
+minute++;
+console.log(minute)
+
+if(minute === 60) {
+    heure++;
+    minute = "00";
+}
+if(heure === 24) {
+    heure = "00";
+
+}
+alert("Dans 1 minute, il sera " + heure + ":" + minute)
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
