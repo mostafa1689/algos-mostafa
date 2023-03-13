@@ -31,7 +31,209 @@ if(heure === 24) {
 alert("Dans 1 minute, il sera " + heure + ":" + minute)
 
 
+//////////////////  EXO 02    ///////////////
 
+// let heure = prompt("Entrer l'heure");
+// let minute = prompt("Entrer les minutes");
+// let seconde = prompt("Entrer les secondes ");
+
+// heure = Number(heure);
+// minute = Number(minute); 
+// seconde = Number(seconde);
+
+// function calculHeure(heure, minute,seconde) {
+
+//     seconde++;
+//     if(seconde === 60) {
+//     minute++;
+//     seconde = "00";
+//     console.log(seconde)
+//     }
+//     if(minute === 60) {
+//     heure++;
+//     minute = "00";
+//     }
+//     if(heure === 24) {
+//     heure = "00";
+
+//     }
+//     return "Dans 1 seconde, il sera " + heure + ":" + minute +":" + seconde
+
+// }
+// const newHour = calculHeure(heure,minute,seconde);
+// alert(newHour);
+
+/////// ///////// EX3 //////////////////
+
+// let firstPrice = 10 ;
+// let secondePrice = 9 ; 
+// let lastPrice = 8 ;
+
+// firstPrice = Number(firstPrice);
+// secondePrice = Number(secondePrice);
+// lastPrice = Number(lastPrice); 
+
+// let numberPhotocopy = prompt("Entrer le nombre de photocopie souhaité");
+
+
+// function invoice(numberPhotocopy) {
+    
+//     let calculPrice; 
+//     if (numberPhotocopy <= 10) {
+//     calculPrice = firstPrice * numberPhotocopy / 100 ;
+//     } else if ( numberPhotocopy <= 20) {
+//     calculPrice = secondePrice * numberPhotocopy / 100 ;
+//     } else {
+//     calculPrice = lastPrice * numberPhotocopy / 100; 
+//     } 
+//     return "Total de photocopies est  " + calculPrice + " euros "
+
+// }
+// const calculPrice = invoice(numberPhotocopy);
+// alert(calculPrice);
+// console.log(calculPrice);
+
+/////////////// EXO 4  /////////////
+
+// let age = parseInt(prompt("Quel est votre age  ?"));
+// let sexe = prompt("Quel est votre sexe (homme/femme) ?");
+
+// age = Number(age)
+
+// function calculImpot(age,sexe) {
+
+//     if (sexe === "homme" && age > 20) {
+//     console.log("L'habitant doit payer des impôts ! ");
+
+//     } else if (sexe === "femme" && age >= 18 && age <= 35) {
+//     console.log("L'habitant doit payer des impôts !");
+
+//     } else {
+//     console.log("L'habitant ne doit pas payer d'impôts !");
+// } return
+// } 
+
+// calculImpot(age,sexe)
+
+////////////////// EXO 5    ///////////
+
+
+/// conduct 1 = >  - age < 25ans + dureePermis <= 2 ans + accident = 0
+             //    - tarif rouge sinon refuse de l'assurer 
+
+/// conduct 2 = >  - age < 25ans + dureePermis >= 2 ans OU (||) age > 25ans + dureePermis< 2 ans 
+//                 + accident = 0 => tarif : orange  
+             //    si accident = 1 tarif rouge = > sinon refuse de l'assurer 
+
+/// conduct 3 = >  - age > 25ans + dureePermis > 2 ans 
+//                 + accident = 0 => tarif : vert 
+             //    si accident = 1 tarif orange ; si accident = 2 tarif rouge ; sinon refuse de l'assurer             
+             
+
+//// les points //
+
+// 0 : on n'assure pas 
+// 1 : tarif Rouge  ;
+// 2 : tarif  Orange ; 
+// 3 : tarif  Vert ; 
+// 4 : tarif   Bleu; 
+
+let nbrePoint = 0;
+let age = 0; 
+let dureePermis = 0; 
+let nbreAccidents = 0; 
+let dureeAssurance = 0; 
+
+
+age = Number(age);
+dureePermis = Number(dureePermis);
+nbreAccidents = Number(nbreAccidents);  
+dureeAssurance = Number(dureeAssurance );
+
+age = prompt("Quel est votre age ?");
+dureePermis = prompt("combien d'années vous êtes titulaire de votre permis?");
+nbreAccidents = prompt("vous etes combien de fois responsable d'un accident") ;
+
+function tarifAssirance(age, dureePermis, nbreAccidents, dureeAssurance){
+    let NewNumPoint = 0;
+if (age < 25 ) { 
+    if (dureePermis < 2) {
+        switch (nbreAccidents) {
+            case "0": 
+            nbrePoint = 1 ;
+            break ; 
+            default:
+            alert("on n'assure pas ");
+        }
+    } else {
+        // durée de titulation de permis dureePermis >= 2
+        switch (nbreAccidents) {
+            case "0": 
+            nbrePoint = 2 ;
+            break ; 
+            case "1" : 
+            nbrePoint = 1 ;
+            break ; 
+            default:
+            alert("on n'assure pas ");
+        }
+    }
+} else {
+    // age >= 25
+    if (dureePermis < 2) {
+        switch (nbreAccidents) {
+            case "0": 
+            nbrePoint = 2 ;
+            break ; 
+            case "1" : 
+            nbrePoint = 1 ;
+            break ; 
+            default:
+            alert("on n'assure pas ");
+        }
+    } else {
+        // durée de titulation de permis dureePermis >= 2
+        switch (nbreAccidents) {
+            case "0": 
+            nbrePoint = 3 ;
+            break ; 
+            case "1" : 
+            nbrePoint = 2 ;
+            break ; 
+            case "2" : 
+            nbrePoint = 1 ;
+            break ; 
+            default:
+            alert("on n'assure pas ");
+        }
+    }
+}
+console.log(" Vote nombre de point avant l'avantage de fidélité est " + nbrePoint);
+
+dureeAssurance = prompt("Entrer la durée de votre fidélité ");
+
+if (dureeAssurance  >= 5) {  
+    NewNumPoint = nbrePoint; 
+    switch (NewNumPoint ) {
+            case 1 : 
+            NewNumPoint = 2  ;
+            alert (" Votre tarif est : tarif orange.");
+            break ; 
+            case 2 : 
+            NewNumPoint = 3 ;
+            alert(" Votre tarif est :  tarif vert.");
+            break ; 
+            case 3 : 
+            NewNumPoint = 4 ;
+            alert(" Votre tarif est :  tarif bleu.")
+            break ; 
+            default:
+            alert(" pas d'avantage ");
+}
+} 
+console.log(" Vote nombre de point après l'avantage de fidélité est " + NewNumPoint);
+}
+const NewNumPoint = tarifAssirance(age, dureePermis, nbreAccidents, dureeAssurance);
 
 
 
